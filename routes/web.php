@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+	return view('welcome');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+	Route::put('produtos/{prod}', 'ProdutoController@update')->name('produto.update');
+	Route::post('produtos', 'ProdutoController@store')->name('produto.store');
+	Route::get('produtos/novo', 'ProdutoController@novo')->name('produto.novo');
+	Route::get('produtos/edita', 'ProdutoController@edita')->name('produto.edita');
+	Route::delete('produtos/{prod}', 'ProdutoController@destroy')->name('produto.deleta');
+	Route::get('produtos/lista', 'ProdutoController@lista')->name('produto.lista');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
