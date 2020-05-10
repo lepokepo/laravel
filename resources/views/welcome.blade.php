@@ -6,7 +6,7 @@
         <div class="header-body text-center mt-7 mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
-                    <h1 style="font-size: 50px; color: #252525!important" class="text-white">{{ __('Baccano Cars') }}</h1>
+                    <img src="{{ asset('argon') }}/img/brand/black.png" class="navbar-brand-img" alt="...">
                 </div>
             </div>
         </div>

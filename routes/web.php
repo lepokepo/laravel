@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProdutoController@prodGraph')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -26,15 +26,23 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
-	Route::put('produtos/{prod}', 'ProdutoController@update')->name('produto.update');
-	Route::post('produtos', 'ProdutoController@store')->name('produto.store');
-	Route::get('produtos/novo', 'ProdutoController@novo')->name('produto.novo');
-	Route::get('produtos/edita', 'ProdutoController@edita')->name('produto.edita');
-	Route::delete('produtos/{prod}', 'ProdutoController@destroy')->name('produto.deleta');
-	Route::get('produtos/lista', 'ProdutoController@lista')->name('produto.lista');
+	//                   venda
+	Route::get('/vendas/nova', 'VendaController@nova')->name('venda.nova');
+
+	//                adicionando
+	Route::post('/produtos', 'ProdutoController@store')->name('produto.store');
+	Route::get('/produtos/novo', 'ProdutoController@novo')->name('produto.novo');
+
+	//                  editando
+	Route::get('/produtos/edita/{prod}', 'ProdutoController@edita')->name('produto.edita');
+	Route::put('/produtos/{produto}', 'ProdutoController@update')->name('produto.update');
+
+	//                    misc
+	Route::delete('/produtos/{produto}', 'ProdutoController@destroy')->name('produto.destroy');
+	Route::get('/produtos/lista', 'ProdutoController@lista')->name('produto.lista');
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProdutoController@prodGraph')->name('home');

@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('argon') }}/img/brand/black.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img src="{{ asset('argon') }}/img/brand/green.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -80,7 +80,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Menu') }}
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Home') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -104,19 +104,56 @@
                         </ul>
                     </div>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produto.novo') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Adicionar Carro') }}
+                    <a class="nav-link active" href="#navbar-carro" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-carro">
+                        <i class="fab fa-laravel"></i>
+                        <span class="nav-link-text ">{{ __('Veículos') }}</span>
                     </a>
-                    <a class="nav-link" href="{{ route('produto.lista') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Lista de Carro') }}
-                    </a>
+
+                    <div class="collapse show" id="navbar-carro">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('produto.novo') }}">
+                                    <i>Adicionar Veículo</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('produto.lista') }}">
+                                    <i>Lista de Veículo</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#navbar-venda" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-venda">
+                        <i class="fab fa-laravel"></i>
+                        <span class="nav-link-text ">{{ __('Vendas') }}</span>
+                    </a>
+
+                    <div class="collapse show" id="navbar-venda">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('venda.nova', auth()->user()->id) }}">
+                                    <i>Comprar</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('produto.lista') }}">
+                                    <i>Lista de Vendas</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
-            <!-- Divider -->
-            <!-- <hr class="my-3">
-            <!-- Heading -->
-            <!-- <h6 class="navbar-heading text-muted">Documentation</h6> -->
+
+
         </div>
     </div>
 </nav>

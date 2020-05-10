@@ -22,6 +22,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Valor</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,14 +48,14 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <form action="{{ route('produto.deleta', $produto) }}" method="post">
+                                            <form action="{{ route('produto.destroy', $produto) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a class="dropdown-item" href="{{ route('produto.edita', $produto) }}">{{ ('Edit') }}</a>
                                                 <button type="button" class="dropdown-item" onclick="confirm('{{ ("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                                    {{ __('Delete') }}
+                                                    {{ __('Deletar') }}
                                                 </button>
                                             </form>
+                                            <a class="dropdown-item" href="{{ route('produto.edita', $produto) }}">{{ ('Editar') }}</a>
                                         </div>
                                     </div>
                                 </td>

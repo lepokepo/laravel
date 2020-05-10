@@ -25,7 +25,7 @@
                         <div class="pl-lg-4">
                             <div class="form-group{{ $errors->has('nome') ? ' has-danger' : '' }}">
                                 <label class="form-control-label" for="input-nome">{{ __('Nome') }}</label>
-                                <input type="text" name="nome" id="input-nome" class="form-control form-control-alternative{{ $errors->has('nome') ? ' is-invalid' : '' }}" placeholder="{{ __('nome') }}" value="{{ old('nome') }}" required autofocus>
+                                <input type="text" name="nome" id="input-nome" class="form-control form-control-alternative{{ $errors->has('nome') ? ' is-invalid' : '' }}" placeholder="{{ __('Nome') }}" value="{{ old('nome') }}" required autofocus>
 
                                 @if ($errors->has('nome'))
                                 <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('valor') ? ' has-danger' : '' }}">
                                 <label class="form-control-label" for="input-valor">{{ __('Valor') }}</label>
-                                <input type="number" name="valor" id="input-valor" class="form-control form-control-alternative{{ $errors->has('valor') ? ' is-invalid' : '' }}" placeholder="{{ __('valor') }}" value="{{ old('valor') }}" required>
+                                <input type="number" name="valor" id="input-valor" class="form-control form-control-alternative{{ $errors->has('valor') ? ' is-invalid' : '' }}" placeholder="{{ __('Valor') }}" value="{{ old('valor') }}" required>
 
                                 @if ($errors->has('valor'))
                                 <span class="invalid-feedback" role="alert">

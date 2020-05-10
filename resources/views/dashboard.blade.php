@@ -3,24 +3,29 @@
 @section('content')
 @include('layouts.headers.cards')
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 <div class="container-fluid mt--7">
-    <div class="row mt-5">
-        <div class="col-xl mb-5 mb-xl-0 fter">
+    <div class="row">
+        <div class="col-xl mb-5 mb-xl-0">
             <div class="card shadow">
-                <div class="card-header border-0">
+                <div class="card-header bg-transparent">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Lista de carros</h3>
+                            <h6 class="text-uppercase text-dark ls-1 mb-1">Veículos</h6>
+                            <h2 class="text-dark mb-0">Top 5 mais caros</h2>
                         </div>
                     </div>
                 </div>
-                <div style="min-height: 25rem" class="table-responsive">
-
+                <div class="card-body">
+                    {!! $chart->container() !!}
+                    {!! $chart->script() !!}
                 </div>
+
             </div>
         </div>
 
     </div>
+
 
     @include('layouts.footers.auth')
 </div>

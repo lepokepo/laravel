@@ -4,13 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Produto;
 use App\Http\Requests\ProdutoRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Charts\ProdTopChart;
+
 
 class ProdutoController extends Controller
 {
     public function lista()
     {
         return view('produtos.lista', ['produtos' => Produto::paginate(20)]);
+    }
+
+    public function prodGraph()
+    {
+        $prods = Produto::orderBy('valor', 'desc')->take(5)->get();
+
+        $chart = new ProdTopChart;
+        //nomes prods
+        $chart->labels([$prods[0]->nome, $prods[1]->nome, $prods[2]->nome, $prods[3]->nome, $prods[4]->nome]);
+        $chart->dataset('Valores', 'line', [$prods[0]->valor, $prods[1]->valor, $prods[2]->valor, $prods[3]->valor, $prods[4]->valor]);
+
+        return view('dashboard', compact('chart'));
     }
 
     public function novo()
@@ -35,11 +48,11 @@ class ProdutoController extends Controller
 
 
     //  * Update the specified user in storage
-    public function update(Produto  $produto)
+    public function update(ProdutoRequest $request, Produto  $produto)
     {
-        $produto->update();
+        $produto->update($request->all());
 
-        return redirect()->route('user.index')->withStatus(__('Produto atualizado com sucesso.'));
+        return redirect()->route('produto.lista')->withStatus(__('Produto atualizado com sucesso.'));
     }
 
     //  * Remove the specified user from storage
